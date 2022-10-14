@@ -78,19 +78,10 @@ class SaveKeeper:
          ID = Id()
          delete_url = f"https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/{ID}"
          requests.delete(delete_url)
-         return ("deleted successfuly ")
-
+         return f"You deleted {social_media} from your collection."
     def exit_program(self):
         return "Thanks for using SeaBed, hope to see you soon."
     
-    
-razan=SaveKeeper()
-# print(razan.view_accounts())
-# razan.add_account("gmail","razan","123")
-# razan.add_account("linkedIn","razan","123")
-# razan.add_account("yahoo","razan","123")
-print(razan.view_accounts())
-print(razan.delete_account("Facobook"))
-print(razan.edit_account("LinkedIn","Razan_",444))
+
 
 
