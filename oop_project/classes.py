@@ -13,12 +13,12 @@ class SaveKeeper:
 
     User Guide --> 
     
-    - Type (view) to view all the your accounts passwords.
-    - Type (view - account name) to view 
-    - Type (add) to add account details.
-    - Type (edit - account name) to edit the account details.
-    - Type (delete - account name) to delete the account.
-    - Type (exit) to exit the program.
+    - Type (1) to view all the your accounts passwords.
+    - Type (2) to view a specific account.
+    - Type (3) to add account details.
+    - Type (4) to edit the account details.
+    - Type (5) to delete the account.
+    - Type (6) to exit the program.
     ---------------------------------------------------------
     '''
         return message
@@ -34,21 +34,20 @@ class SaveKeeper:
 
         for i in range(len(r["sheet1"])):
             if r["sheet1"][i]["socialMedia"] == social_media:
-                return (r["sheet1"][i])
+                x = r["sheet1"][i]["socialMedia"] + " --> " + "User Name: " + r["sheet1"][i]["userName"] + ", " + "Password: " + str(r["sheet1"][i]["password"])
+        return (x)
 
     def add_account(self, social_media, user_name, password):
         post_url = 'https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1'
         data = {"sheet1":{'socialMedia': social_media, 'userName': user_name, 'password': password}}
-        p = requests.post(post_url, json=data)
-        return p.json()
+        requests.post(post_url, json=data)
+        return (f"{social_media} has been added to your collection successfully")
 
     def edit_account(self, social_media, user_name, password):
         edit_url = 'https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/[Object ID]'
-        
     
     def delete_account(self, social_media):
         delete_url = "https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/[Object ID]"
-        
 
     def exit_program(self):
         return "Thanks for using SeaBed, hope to see you soon."

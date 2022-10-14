@@ -18,12 +18,12 @@ def test_savekeeper_str(user_instance):
 
     User Guide --> 
     
-    - Type (view) to view all the your accounts passwords.
-    - Type (view - account name) to view 
-    - Type (add) to add account details.
-    - Type (edit - account name) to edit the account details.
-    - Type (delete - account name) to delete the account.
-    - Type (exit) to exit the program.
+    - Type (1) to view all the your accounts passwords.
+    - Type (2) to view a specific account.
+    - Type (3) to add account details.
+    - Type (4) to edit the account details.
+    - Type (5) to delete the account.
+    - Type (6) to exit the program.
     ---------------------------------------------------------
     '''
     assert user_instance.__str__() == message
@@ -36,15 +36,15 @@ def test_view_accounts(user_instance):
 @pytest.mark.skip("todo")
 def test_view_account(user_instance):
     social_media_input = "Facebook"
-    expected_output = {'socialMedia': 'Facebook', 'userName': 'Test', 'password': 12345, 'id': 2}
+    expected_output = '''Facebook --> User Name: Test, Password: 12345'''
     assert user_instance.view_account(social_media=social_media_input) == expected_output
 
-@pytest.mark.skip("todo")
+# @pytest.mark.skip("todo")
 def test_add_account(user_instance):
     social_media_input = "Instagram"
     user_name_input = "Test 2"
     password_input = "123456"
-    expected_output = {'sheet1': {'socialMedia': 'Instagram', 'userName': 'Test 2', 'password': '123456', 'id': 3}}
+    expected_output = f"{social_media_input} has been added to your collection successfully"
     assert user_instance.add_account(social_media=social_media_input, user_name=user_name_input, password=password_input) == expected_output
 
 # @pytest.mark.skip("todo")
