@@ -39,7 +39,7 @@ def test_view_account(user_instance):
     expected_output = '''Facebook --> User Name: Test, Password: 12345'''
     assert user_instance.view_account(social_media=social_media_input) == expected_output
 
-# @pytest.mark.skip("todo")
+@pytest.mark.skip("todo")
 def test_add_account(user_instance):
     social_media_input = "Instagram"
     user_name_input = "Test 2"
@@ -60,7 +60,9 @@ def test_delete_account(user_instance):
     social_media_input = "Instagram"
     user_instance.delete_account(social_media_input)
     expected_output = [{'socialMedia': 'Facebook', 'userName': 'Test', 'password': 12345, 'id': 2}]
+    expected_output2 = f"You deleted {social_media_input} from your collection."
     assert user_instance.view_accounts() == expected_output
+    assert user_instance.delete_account(social_media_input) == expected_output2
 
 @pytest.mark.skip("todo")
 def test_exit_program(user_instance):
