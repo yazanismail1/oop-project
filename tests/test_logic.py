@@ -53,7 +53,7 @@ def test_edit_account(user_instance):
     user_name_input = "Test 2"
     password_input = "654321"
     expected_output = {'sheet1': {'socialMedia': 'Instagram', 'userName': 'Test 2', 'password': '654321', 'id': 3}}
-    assert user_instance.edit_account(social_media=social_media_input, user_name=user_name_input, password=password_input) == expected_output
+    assert user_instance.edit_account(id,social_media=social_media_input, user_name=user_name_input, password=password_input) == expected_output
 
 # @pytest.mark.skip("todo")
 def test_delete_account(user_instance):
