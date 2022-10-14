@@ -2,7 +2,7 @@ import requests
 
 class SaveKeeper:
     def __init__(self):
-        pass
+        print("hello")
 
     def __str__(self):
         message = '''
@@ -43,11 +43,32 @@ class SaveKeeper:
         requests.post(post_url, json=data)
         return (f"{social_media} has been added to your collection successfully")
 
-    def edit_account(self, social_media, user_name, password):
-        edit_url = 'https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/[Object ID]'
-    
-    def delete_account(self, social_media):
-        delete_url = "https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/[Object ID]"
+    def edit_account(self, id,social_media, user_name, password):
+        Id=id
+        edit_url = f'https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/{Id}'
+        data = {"sheet1":{'socialMedia': social_media, 'userName': user_name, 'password': password}}
+
+        requests.put(edit_url,json=data)
+        return "Edited successfully"
+
+
+    def delete_account(self,id):
+        i=id
+        delete_url = f"https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/{i}"
+        requests.delete(delete_url)
+        return ("deleted successfuly ")
 
     def exit_program(self):
         return "Thanks for using SeaBed, hope to see you soon."
+    
+    
+razan=SaveKeeper()
+# print(razan.view_accounts())
+# razan.add_account("gmail","razan","123")
+# razan.add_account("linkedIn","razan","123")
+# razan.add_account("yahoo","razan","123")
+print(razan.view_accounts())
+# print(razan.delete_account(5))
+print(razan.edit_account(4,"LinkedIn","Razan_abdullah",444))
+
+
