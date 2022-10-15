@@ -35,20 +35,26 @@ def Generat_Password():
     SYMBOLS = ['@', '#', '$', '%', '=', ':', '?',
                '.', '/', '|', '~', '>', '*', '(', ')', '<']
 
-    COMBINED_LIST = DIGITS + UPCASE_CHARACTERS + LOCASE_CHARACTERS + SYMBOLS
+    # COMBINED_LIST = DIGITS + UPCASE_CHARACTERS + LOCASE_CHARACTERS + SYMBOLS
 
     digit = random.choice(DIGITS)
+    digit2 = random.choice(DIGITS)
+
     upper = random.choice(UPCASE_CHARACTERS)
+    upper2 = random.choice(UPCASE_CHARACTERS)
+
     lower = random.choice(LOCASE_CHARACTERS)
+    lower2 = random.choice(LOCASE_CHARACTERS)
+
     symbol = random.choice(SYMBOLS)
+    symbol2 = random.choice(SYMBOLS)
+    Pass = digit + upper + lower + symbol+digit2+upper2+lower2+symbol2
 
-    Pass = digit + upper + lower + symbol
+    # for x in range(PassWord_Len - 4):
+    #     Pass = Pass + random.choice(COMBINED_LIST)
 
-    for x in range(PassWord_Len - 4):
-        Pass = Pass + random.choice(COMBINED_LIST)
-
-        pass_list = array.array('u', Pass)
-        random.shuffle(pass_list)
+    pass_list = array.array('u', Pass)
+    random.shuffle(pass_list)
 
     password = ""
     for x in pass_list:
