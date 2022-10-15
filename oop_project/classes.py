@@ -25,7 +25,9 @@ class SaveKeeper:
         return message
 
     def view_accounts(self):
-        get_url = 'https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1'
+        # get_url = 'https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1'
+        get_url = f'https://api.sheety.co/f2fe1789e9008afa182a1e94b12229f3/seabed/sheet1'
+
         r = requests.get(get_url).json()
         return r["sheet1"]
 
@@ -46,9 +48,38 @@ class SaveKeeper:
             'userName': user_name, 'password': password}}
         requests.post(post_url, json=data)
         return (f"{social_media} has been added to your collection successfully")
+##################################################################################
+    def edite_account(self, social_media, user_name, password):
 
-    def edit_account(self, social_media, user_name, password):
+        a = self.view_accounts()
+        def Id():
+            for i in a:
+                for (key, value) in i.items():
+                    if value == social_media:
+                        return i["id"]
+                    else:
+                        return ("This social media does'nt exist")
 
+        ID = Id()
+        if (isinstance(ID, int) ):
+            # edit_url = f'https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/{ID}'
+            edite_url = f'https://api.sheety.co/f2fe1789e9008afa182a1e94b12229f3/seabed/sheet1/{ID}'
+
+            data = {"sheet1": {'socialMedia': social_media,
+                'userName': user_name, 'password': password}}
+
+            requests.put(edite_url, json=data)
+            return "Edited successfully"
+        
+        
+        
+        
+        else:
+            return(" OOps! This social media does'nt exist to be modified ")
+
+        
+#######################################################################################
+    def delete_account(self, social_media):
         a = self.view_accounts()
 
         def Id():
@@ -56,32 +87,30 @@ class SaveKeeper:
                 for (key, value) in i.items():
                     if value == social_media:
                         return i["id"]
+                    else:
+                        return (" ")
+
 
         ID = Id()
+        
+        if (isinstance(ID, int) ):
+            delete_url = f'https://api.sheety.co/f2fe1789e9008afa182a1e94b12229f3/seabed/sheet1/{ID}'
 
-        edit_url = f'https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/{ID}'
-        data = {"sheet1": {'socialMedia': social_media,
-            'userName': user_name, 'password': password}}
-
-        requests.put(edit_url, json=data)
-        return "Edited successfully"
-
-    def delete_account(self, social_media):
-         a = self.view_accounts()
-
-         def Id():
-            for i in a:
-                for (key, value) in i.items():
-                    if value == social_media:
-                        return i["id"]
-
-         ID = Id()
-         delete_url = f"https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/{ID}"
-         requests.delete(delete_url)
-         return f"You deleted {social_media} from your collection."
+            #delete_url = f"https://api.sheety.co/b7d8ad9f87b711f1445e9821751afa0e/oopProject/sheet1/{ID}"
+            requests.delete(delete_url)
+            return f"You deleted {social_media} from your collection."
+        
+        else:
+            return(" OOps! This social media does'nt exist to be deleted")
+     
+     
     def exit_program(self):
         return "Thanks for using SeaBed, hope to see you soon."
     
+razan=SaveKeeper()
+# print(razan.delete_account("snapchat"))
+print(razan.edite_account("cebook","Tttest",0))
+print(razan.delete_account("cebook",))
 
 
-
+# print(razan.view_accounts())
