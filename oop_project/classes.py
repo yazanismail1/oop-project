@@ -3,8 +3,13 @@ import requests
 
 
 class SaveKeeper:
+    __instance__ = None
+
     def __init__(self):
-        pass
+        if SaveKeeper.__instance__ is None:
+            SaveKeeper.__instance__ = self
+        else:
+            raise Exception("We can not create another class")
 
     def __str__(self):
         message = '''
