@@ -1,6 +1,7 @@
 from tokenize import Number
 import requests
 
+
 class SaveKeeper:
     def __init__(self):
         pass
@@ -12,8 +13,8 @@ class SaveKeeper:
     ---------------------------------------------------------------------
     A place where you never need to reset a password again...
 
-    User Guide --> 
-    
+    User Guide -->
+
     - Type (1) to view all the your accounts passwords.
     - Type (2) to view a specific account.
     - Type (3) to add account details.
@@ -45,7 +46,9 @@ class SaveKeeper:
 
         for i in range(len(r["sheet1"])):
             if r["sheet1"][i]["socialMedia"] == social_media:
-                x = r["sheet1"][i]["socialMedia"] + " --> " + "User Name: " + r["sheet1"][i]["userName"] + ", " + "Password: " + str(r["sheet1"][i]["password"])
+                x = r["sheet1"][i]["socialMedia"] + " --> " + "User Name: " + \
+                    r["sheet1"][i]["userName"] + ", " + \
+                        "Password: " + str(r["sheet1"][i]["password"])
         return (x)
 
     def add_account(self, social_media, user_name, password):
