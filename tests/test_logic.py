@@ -8,7 +8,7 @@ def user_instance():
 
 # -------- CLASS TESTS -------- #
 
-@pytest.mark.skip("todo")
+# @pytest.mark.skip("todo")
 def test_savekeeper_str(user_instance):
     message = '''
     ---------------------------------------------------------------------
@@ -16,8 +16,8 @@ def test_savekeeper_str(user_instance):
     ---------------------------------------------------------------------
     A place where you never need to reset a password again...
 
-    User Guide --> 
-    
+    User Guide -->
+
     - Type (1) to view all the your accounts passwords.
     - Type (2) to view a specific account.
     - Type (3) to add account details.
