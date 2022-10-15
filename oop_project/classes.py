@@ -46,9 +46,7 @@ class SaveKeeper:
 
         for i in range(len(r["sheet1"])):
             if r["sheet1"][i]["socialMedia"] == social_media:
-                x = r["sheet1"][i]["socialMedia"] + " --> " + "User Name: " + \
-                    r["sheet1"][i]["userName"] + ", " + \
-                        "Password: " + str(r["sheet1"][i]["password"])
+                x = r["sheet1"][i]["socialMedia"] + " --> " + "User Name: " + r["sheet1"][i]["userName"] + ", " + "Password: " + str(r["sheet1"][i]["password"])
         return (x)
 
     def add_account(self, social_media, user_name, password):
